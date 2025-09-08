@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="board">
+        <div id="status-bar">
+            <div id="beings-for-win">
+                <div class="being">
+                    <img src="images/zouwu.png" alt="Zouwu">
+                    <span class="zouwu">3</span>
+                </div>
+                <div class="being">
+                    <img src="images/kelpie.png" alt="Kelpie">
+                    <span class="kelpie">0</span>
+                </div>
+            </div>
+            <div id="moves" class="stats">
+                <span>Moves</span>
+                <span id="moves-value">0</span>
+            </div>
+            <div id="score" class="stats">
+                <span>Score:</span>
+                <span id="score-value">0</span>
+            </div>
+        </div>
+        <table id="map"></table>
+        <div id="game-footer">
+            <p>Swap animals to form a sequence of three in a row</p>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
