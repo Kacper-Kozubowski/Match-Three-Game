@@ -19,18 +19,28 @@
                     <span class="kelpie">0</span>
                 </div>
             </div>
-            <div id="moves" class="stats">
+            <div id="moves">
                 <span>Moves</span>
+                <br>
                 <span id="moves-value">0</span>
             </div>
-            <div id="score" class="stats">
+            <div id="score">
                 <span>Score:</span>
                 <span id="score-value">0</span>
             </div>
         </div>
         <table id="map"></table>
-        <div id="game-footer">
-            <p>Swap animals to form a sequence of three in a row</p>
+        <div id="game-footer"></div>
+
+        <div id="end-overlay">
+            <div class="panel">
+                <h2 id="end-title">Game Over</h2>
+                <p id="end-message"></p>
+                <div class="actions">
+                    <button id="restart-btn">Restart</button>
+                    <button id="exit-btn">Exit</button>
+                </div>
+            </div>
         </div>
     </div>
 

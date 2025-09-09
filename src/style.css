@@ -7,25 +7,70 @@ body {
 }
 #board {
     background-image: url("images/board-bg.png");
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-size: cover;
+
+    display: flex;
+    flex-direction: column;
 }
 
 #status-bar {
     background-image: url("images/state-panel-bg.png");
-    width: 100%;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 46% auto 46%;
     height: 10vw;
     background-size: cover;
+    flex-shrink: 0;
+}
+
+#score{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    margin-top: 1vw;
+    margin-left: 1.5vw;
+    font-size: 3vw;
+    text-align: left;
+}
+
+#moves{
+    color: white;
+    text-shadow: 1px 1px 0 black;
+    margin-top: 1vw;
+    font-size: 2.2vw;
+}
+
+#beings-for-win {
+    margin-top: 0.8vw;
+    margin-right: 3.8vw;
+    text-align: right;
+
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 1vw;
+}
+
+.being {
+    display: inline-flex;
+    align-items: center;
+    gap: .6vw;
+}
+
+.being img {
+    height: 4.2vw;
+    aspect-ratio: 1/1;
+    display: block;
 }
 
 #map {
-    margin-top: 3vh;
+    margin-top: 2vh;
     margin-left: auto;
     margin-right: auto;
-    height: 60vh;
     aspect-ratio: 1 / 1;
-    width: auto;
+    height: 60vh;
+    width: 60vh;    /* Required for table-layout: fixed to work */
     border-collapse: separate;
     border-spacing: 4px;
     table-layout: fixed;
@@ -43,13 +88,14 @@ body {
 
 .cell:hover {
     background-image: url("images/cell-hover-bg.png");
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
     cursor: pointer;
 }
 
 .cell.selected {
     background-image: url("images/cell-selected-bg.png");
-    background-size: cover;
+    background-size: contain;
     background-position: center;
 }
 
@@ -64,61 +110,20 @@ body {
     transform: scale(1.1);
 }
 
-.stats {
-    color: white;
-    text-shadow: 1px 1px 0px black;
-}
-
-#score{
-    font-size: 250%;
-    position: absolute;
-    left: 56vw;
-    top: 3vh;
-    display: inline-block;
-}
-
-#moves{
-    font-size: 200%;
-    position: absolute;
-    display: inline-block;
-    left: 47.1vw;
-    top: 3vh;
-}
-
-#beings-for-win {
-    display: inline-flex;
-    position: absolute;
-    left: 31vw;
-    top: 1.5vh;
-    align-items: center;
-    gap: 1vw;
-}
-
-.being {
-    display: inline-flex;
-    align-items: center;
-    gap: .6vw;
-}
-
-.being img {
-    height: 4.2vw;
-    aspect-ratio: 1/1;
-    display: block;
-}
-
 #game-footer {
+    margin-top: 2vw;
     background-image: url("images/game-footer.png");
-    width: 100%;
-    height: 6.8vw;
     background-size: cover;
+    flex-grow: 1;
+    align-content: center;
+
 }
 
 #game-footer p {
     color: white;
-    text-shadow: 1px 1px 0px black;
-    position: relative;
-    top: 50px;
-    font-size: 1.5vw;
+    margin: 0;
+    text-shadow: 1px 1px 0 black;
+    font-size: 2vw;
 }
 
 @keyframes poof {
@@ -149,3 +154,63 @@ body {
     background-size: cover;
     animation: poof 1s steps(1) forwards;
 }
+
+#end-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+
+    justify-content: center;
+
+    display: none;
+    pointer-events: none;
+}
+
+#end-overlay.show {
+    display: flex;
+    pointer-events: all;
+}
+
+#end-overlay .panel {
+    margin: 28vh auto auto;
+    background: rgba(20,22,35,.92);
+    color: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    padding: 1.5vw;
+    width: 14vw;
+}
+
+#end-overlay h2 {
+    margin: 0;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+#end-overlay p {
+    margin: 0.6vw;
+    font-size: 1vw;
+}
+
+#end-overlay .actions {
+    display: grid;
+    gap: 1vw;
+    padding: 2vw 2vw 1vw;
+}
+
+#end-overlay button{
+    font: inherit;
+    padding: .6em 1.1em;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,.85);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1vw;
+}
+
+#end-overlay button:hover {
+    background: rgba(255,255,255,.3);
+}
+
